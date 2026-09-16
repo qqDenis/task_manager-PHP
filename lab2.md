@@ -1,7 +1,7 @@
 <?php
     $appName = "Task Manager";
     $taskTitle = "Вивчити основи PHP";
-    $taskTimeEstimate = "5"; // ціле число (очікуваний час на виконання в годинах)
+    $taskTimeEstimate = "години на вивчення 5"; // ціле число (очікуваний час на виконання в годинах)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,3 +22,5 @@
     </main>
 </body>
 </html>
+
+![Результат](Screenshot_1.png)
