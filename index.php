@@ -1,12 +1,42 @@
 <?php
     $appName = "Task Manager";
-    $taskTitle = "Вивчити основи PHP та принципи декомпозиції коду";
-    $taskTimeEstimate = 5; // ціле число (очікуваний час на виконання в годинах)
-    $isCompleted = false;
+
+    $tasks = [
+        [
+            'id' => 1,
+            'title' => 'Виконати лабораторну роботу №5',
+            'priority' => 'High',
+            'is_completed' => false
+        ],
+        [
+            'id' => 2,
+            'title' => 'Вивчити основи PHP та принципи декомпозиції коду',
+            'priority' => 'Medium',
+            'is_completed' => true
+        ],
+        [
+            'id' => 3,
+            'title' => 'Підготувати звіт до лабораторної роботи',
+            'priority' => 'Low',
+            'is_completed' => false
+        ],
+        [
+            'id' => 4,
+            'title' => 'Налаштувати локальний сервер',
+            'priority' => 'High',
+            'is_completed' => true
+        ],
+        [
+            'id' => 5,
+            'title' => 'Прочитати документацію про масиви в PHP',
+            'priority' => 'Medium',
+            'is_completed' => false
+        ],
+    ];
 
     function formatTitle($text, $maxLength = 20) {
-        if (strlen($text) > $maxLength) {
-            return substr($text, 0, $maxLength) . '...';
+        if (mb_strlen($text) > $maxLength) {
+            return mb_substr($text, 0, $maxLength) . '...';
         }
         return $text;
     }
@@ -46,11 +76,11 @@
     }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Task Manager</title>
     <style>
         .task-done {
             color: green;
@@ -67,13 +97,16 @@
     </header>
     <main>
         <ul>
-            <li><?= formatTitle($taskTitle, 21) ?></li>
-            <li><?= $taskTimeEstimate ?></li>  
-            <?php if ($isCompleted): ?>
-                <li class="<?= $isCompleted ? 'task-done' : 'task-pending' ?>">✔️ Завдання виконано</li>
-            <?php else: ?>
-                <li class="<?= $isCompleted ? 'task-done' : 'task-pending' ?>">🕒 В процесі</li>
-            <?php endif; ?>
+            <?php foreach ($tasks as $task): ?>
+                <li class="<?= $task['is_completed'] ? 'task-done' : 'task-pending' ?>">
+                    <?= formatTitle($task['title'], 21) ?>
+                    <?php if ($task['is_completed']): ?>
+                        ✔️ Завдання виконано
+                    <?php else: ?>
+                        🕒 В процесі
+                    <?php endif; ?>
+                </li>
+            <?php endforeach; ?>
         </ul>
     </main>
 </body>

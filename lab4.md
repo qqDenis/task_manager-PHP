@@ -1,7 +1,7 @@
 ```php
 function formatTitle($text, $maxLength = 20) {
-    if (mb_strlen($text) > $maxLength) {
-        return mb_substr($text, 0, $maxLength) . '...';
+    if (strlen($text) > $maxLength) {
+        return substr($text, 0, $maxLength) . '...';
     }
     return $text;
 }
